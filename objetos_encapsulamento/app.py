@@ -7,7 +7,7 @@ c1.limite = 200
 print(c1.limite)
 #print(c1._Conta__saldo) #Mesmo com os __ (encapsulamento)
                         #conseguimos acessar o saldo
-print(vars(c1))
+#print(vars(c1))
 s = c1._saldo   #Isso não deve ser digitado nunca
 c1.ver_saldo()
 # c2 = c1 #Passagem de referências
@@ -35,4 +35,12 @@ print(c1)
 # print(c1)
 
 #Total de contas
-print(Conta.get_total_contas())
+c3 = Conta(3, 'Teste', 500, 100)
+
+print(c1.get_total_contas()) #Chamada do método de instância
+print(Conta.get_total_contas()) #Chamada do método de classe
+
+#print(Conta.__slots__)
+print(c3.__dict__)
+c3.chave_pix = '6899999999'
+print(c3.chave_pix)
