@@ -25,7 +25,7 @@ class Diretor {
 }
 
 abstract class Secretaria{
-    + autenticar(senha): boolean
+    + {abstract} autenticar(senha): boolean
 }
 
 class SecretariaExecutiva{
@@ -47,7 +47,7 @@ class Escriturario extends Funcionario{
     + atender(cliente): boolean
     + getBonificacao(): float
 }
-class Autenticavel <<mixin>>{
+interface Autenticavel{
     + {abstract} autenticar(senha): boolean
 }
 class HoraExtra <<mixin>>{
