@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Funcionario {
+    - nome: string
+    - salario: float
+    - email: string
+    + __init__(nome, salario, email)
+    + {abstract} getBonificacao(): float
+}
+
+class Gerente implements Autenticavel, HoraExtra{
+    - senha: string
+    - qtde: int
+    + __init__(nome, salario, email, senha, qtde)
+    + getBonificacao(): float
+    + autenticar(senha): boolean
+    + calcular(horas): float
+}
+
+class Diretor {
+    - seg: int
+    + __init__(nome, cpf, sal, email, senha, qtde, seg)
+    + getBonificacao(): float
+}
+
+abstract class Secretaria{
+    + autenticar(senha): boolean
+}
+
+class SecretariaExecutiva{
+    + __init__()
+    + getBonificacao(): float
+}
+
+class SecretariaAdministrativa {
+    + __init__()
+    + getBonificacao(): float
+}
+class Cliente implements Autenticavel{
+    - nome: string
+    - cpf: string
+    + autenticar(senha): boolean
+}
+
+class Escriturario extends Funcionario{
+    + atender(cliente): boolean
+    + getBonificacao(): float
+}
+class Autenticavel <<mixin>>{
+    + {abstract} autenticar(senha): boolean
+}
+class HoraExtra <<mixin>>{
+    + {abstract} calcular(horas): float
+}
+class Atendimento <<mixin>>{
+    + {abstract} atender(cliente): boolean
+}
+
+Funcionario <|--- Presidente
+Funcionario <|-- Gerente
+Gerente <|-- Diretor
+Funcionario <|-- Secretaria
+Secretaria <|-- SecretariaExecutiva
+Secretaria <|-- SecretariaAdministrativa
+Autenticavel <|.. Secretaria : implements
+Atendimento <|.. Escriturario : implements
+
+@enduml
